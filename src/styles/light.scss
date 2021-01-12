@@ -4,16 +4,26 @@
 /*
  * Table styles
  */
+.piechart-legend-table .piechart-legend-alias,
+.piechart-legend-table .piechart-legend-value,
+.piechart-legend-table .pointer {
+    font-size: 17px;
+}
+
+.dataTables_filter {
+    visibility: hidden;
+}
+
 table.dataTable {
-  width: 100%;
-  margin: 0 auto;
-  clear: both;
-  border-collapse: separate;
-  border-spacing: 0;
-  /*
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+    /*
    * Header and footer styles
    */
-  /*
+    /*
    * Body styles
    */
 }

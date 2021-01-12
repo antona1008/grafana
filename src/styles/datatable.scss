@@ -4,6 +4,7 @@
  * Table styles
  * Grafana Dark - background color #1f1d1d #313131
  */
+
 table.dataTable {
   width: 100%;
   margin: 0 auto;
@@ -20,6 +21,7 @@ table.dataTable {
 table.dataTable thead th,
 table.dataTable tfoot th {
   font-weight: bold;
+  font-size: 25px;
 }
 table.dataTable thead th,
 table.dataTable thead td {
