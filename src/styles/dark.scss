@@ -14,6 +14,45 @@
     visibility: hidden;
 }
 
+.column-filter-icon {
+    color: lightgrey;
+    margin: 4.125px;
+}
+
+input.column-filter {
+    color: white;
+    font-size: 18px;
+}
+
+input::placeholder {
+    color: lightgrey;
+    font-size: 18px;
+    text-overflow: ellipsis;
+}
+
+input[placeholder] {
+    text-overflow: ellipsis;
+}
+
+::-moz-placeholder {
+    text-overflow: ellipsis;
+}
+/* firefox 19+ */
+input:-moz-placeholder {
+    text-overflow: ellipsis;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 
 table.dataTable {
     width: 100%;

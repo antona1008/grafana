@@ -8,6 +8,8 @@ import 'datatables.net';
 import 'mark.js';
 import 'datatables.mark.js';
 
+import "@fortawesome/fontawesome-free/js/all";
+
 export class DatatableRenderer {
   formatters: any;
   colorState: any;
@@ -837,7 +839,7 @@ export class DatatableRenderer {
         .find(`tr:eq(1) th`)
         .each(function(i) {
           var title = $(this).text();
-          $(this).html('<input class="column-filter" type="text" placeholder="Filter ' + title + '" />');  
+          $(this).html('<div class="input-container"><i class="fas fa-search fa-xs column-filter-icon"></i><input class="column-filter" type="text" placeholder="' + title + '"/></div>');  
             $('input', this).on('keyup change', function (this: any) {
                 if (newDT.column(i).search() !== this.value) {
                     newDT
