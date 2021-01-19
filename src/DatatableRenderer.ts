@@ -17,19 +17,21 @@ export class DatatableRenderer {
   table: any;
   isUtc: boolean;
   sanitize: any;
+  samepage: boolean;
   timeSrv: any;
 
   // from app/core/constants
   GRID_CELL_HEIGHT = 30;
   // from inspect
   TITLE_LINE_HEIGHT = 28;
-  constructor(panel: any, table: any, isUtc: boolean, sanitize: any, timeSrv: any) {
+  constructor(panel: any, table: any, isUtc: boolean, sanitize: any, timeSrv: any, samepage: boolean) {
     this.formatters = [];
     this.colorState = {};
     this.panel = panel;
     this.table = table;
     this.isUtc = isUtc;
     this.sanitize = sanitize;
+    this.samepage = samepage;
     this.timeSrv = timeSrv;
   }
 
@@ -69,7 +71,13 @@ export class DatatableRenderer {
         cellTemplate = cellTemplate.replace(/\$__cell\b/, v);
       values.map((val: any, i: any) => (cellTemplate = cellTemplate.replace(`$__pattern_${i}`, val)));
       }
-
+    
+    let targetValue = "_blank";
+    if (style && style.samepage) {
+            if(style.samepage === true) {
+                targetValue = "_self";
+            }
+     }
     if (style && style.sanitize) {
       return this.sanitize(v);
     } else if (style && style.link && cellTemplate && column.text === style.column) {
@@ -88,20 +96,21 @@ export class DatatableRenderer {
           }
         }
         const valueFormatter = kbn.valueFormats[column.unit || style.unit];
+        
         if (style && style.decimals) {
           v = valueFormatter(v, style.decimals, null);
         } else {
           v = valueFormatter(v);
           }
-          return '<a href="' + linkValue + '" style="text-decoration: underline target="_blank">' + v + '</a>';
+          return '<a href="' + linkValue + '" style="text-decoration: underline target="' + targetValue + '">' + v + '</a>';
       } else {
           const linkValue = cellTemplate.replace(/\{\}|\$__cell_\d*/g, v);
-          return '<a href="' + linkValue + '" style="text-decoration: underline target="_blank">' + v + '</a>';
+          return '<a href="' + linkValue + '" style="text-decoration: underline target="' + targetValue + '">' + v + '</a>';
       }
       return _.escape(v);
     } else if (style && style.link) {
         const linkValue = cellTemplate.replace(/\{\}|\$__cell_\d*/g, v);
-      return '<a href="' + linkValue + '" style="text-decoration: underline" target="_blank">' + v + '</a>';
+      return '<a href="' + linkValue + '" style="text-decoration: underline" target="' + targetValue + '">' + v + '</a>';
     } else {
       return _.escape(v);
     }
