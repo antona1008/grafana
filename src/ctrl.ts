@@ -63,6 +63,7 @@ export class DatatablePanelCtrl extends MetricsPanelCtrl {
   mappingTypes: any;
   columnSortMethods: any;
   fontSizes: any;
+  samepage: any;
   colorModes: any;
   columnTypes: any;
   unitFormats: any;
@@ -120,7 +121,8 @@ export class DatatablePanelCtrl extends MetricsPanelCtrl {
       return _.map(this.table.columns, col => {
         return col.text;
       });
-    };
+     };
+
 
     if (this.panel.styles === void 0) {
       this.panel.styles = this.panel.columns;
@@ -262,7 +264,7 @@ export class DatatablePanelCtrl extends MetricsPanelCtrl {
     if (this.dashboard && this.dashboard.hasOwnProperty('isTimezoneUtc')) {
       isInUTC = this.dashboard.isTimezoneUtc();
     }
-    const renderer = new DatatableRenderer(this.panel, this.table, isInUTC, this.$sanitize, this.timeSrv);
+    const renderer = new DatatableRenderer(this.panel, this.table, isInUTC, this.$sanitize, this.timeSrv, this.samepage);
     FileExport.exportTableDataToCsv(renderer.render_values());
   }
 
@@ -270,6 +272,7 @@ export class DatatablePanelCtrl extends MetricsPanelCtrl {
     let data: any[];
     const panel = ctrl.panel;
     const _this = this;
+    const samepage = ctrl.samepage;
 
     /**
      * [renderPanel description]
@@ -281,7 +284,7 @@ export class DatatablePanelCtrl extends MetricsPanelCtrl {
       if (ctrl.dashboard && ctrl.dashboard.hasOwnProperty('isTimezoneUtc')) {
         isInUTC = ctrl.dashboard.isTimezoneUtc();
       }
-      const renderer = new DatatableRenderer(panel, ctrl.table, isInUTC, ctrl.$sanitize, _this.timeSrv);
+      const renderer = new DatatableRenderer(panel, ctrl.table, isInUTC, ctrl.$sanitize, _this.timeSrv, samepage);
       renderer.render();
       _this.dataLoaded = true;
     }
