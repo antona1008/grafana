@@ -787,7 +787,7 @@ export class DatatableRenderer {
       if (this.table.columns[i].hidden) {
         newDT.column(i + rowNumberOffset).visible(false);
       }
-    }
+     }
 
     // enable compact mode
     if (this.panel.compactRowsEnabled) {

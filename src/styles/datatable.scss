@@ -233,7 +233,6 @@ table.dataTable td.dt-center,
 table.dataTable td.dataTables_empty {
   text-align: center;
 }
-table.dataTable th.dt-right,
 table.dataTable td.dt-right {
   text-align: right;
 }
@@ -256,12 +255,6 @@ table.dataTable thead td.dt-head-center,
 table.dataTable tfoot th.dt-head-center,
 table.dataTable tfoot td.dt-head-center {
   text-align: center;
-}
-table.dataTable thead th.dt-head-right,
-table.dataTable thead td.dt-head-right,
-table.dataTable tfoot th.dt-head-right,
-table.dataTable tfoot td.dt-head-right {
-  text-align: right;
 }
 table.dataTable thead th.dt-head-justify,
 table.dataTable thead td.dt-head-justify,
