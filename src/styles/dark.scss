@@ -1,5 +1,6 @@
 @import '../../node_modules/@grafana/toolkit/sass/_variables.dark.scss';
 @import 'datatable';
+
 /*
  * Table styles
  */
@@ -8,6 +9,16 @@
 .piechart-legend-table .piechart-legend-value,
 .piechart-legend-table .pointer {
     font-size: 17px;
+}
+
+span.search-icon::before {
+    font-family: "FontAwesome";
+    font-weight: 900;
+    content: "\f002";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    color: white;
 }
 
 .dataTables_filter {
